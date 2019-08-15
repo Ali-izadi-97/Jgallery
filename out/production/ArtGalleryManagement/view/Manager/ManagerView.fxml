@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXNodesList?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="1078.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManagerController">
+   <children>
+      <VBox layoutX="-3.0" layoutY="-6.0" prefHeight="622.0" prefWidth="222.0" style="-fx-background-color: #244361; -fx-alignment: top-center;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="imageIv" fitHeight="53.0" fitWidth="54.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" translateY="20.0">
+
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="86.0" prefWidth="208.0" text="JGallery" textFill="WHITE" underline="true">
+               <font>
+                  <Font name="Sakkal Majalla Bold" size="43.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="artworkbtn" onAction="#manageArtwork" prefHeight="55.0" prefWidth="224.0" ripplerFill="RED" text="Manage Artwork" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="IMAGE" size="15" translateX="5.0" wrappingWidth="27.014270782470703" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="artistbtn" onAction="#manageArtist" prefHeight="55.0" prefWidth="222.0" ripplerFill="#00ecff" text="Manage Artists" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" size="17" wrappingWidth="20.942845821380615" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="eventsbtn" onAction="#showEvents" prefHeight="55.0" prefWidth="225.0" ripplerFill="#e1ff00" text="Show Events" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" size="17" translateX="-12.0" wrappingWidth="10.985692024230957" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="genrebtn" onAction="#manageGenre" prefHeight="55.0" prefWidth="226.0" text="Manage Genre" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TAG" size="15" wrappingWidth="19.814260482788086" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="typebtn" onAction="#manageType" prefHeight="55.0" prefWidth="238.0" text="Manage Type" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TRY" size="15" translateX="-4.0" wrappingWidth="15.814291000366211" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnExport" prefHeight="55.0" prefWidth="226.0" text="Export All Data" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="SHARE" size="15" wrappingWidth="25.4000244140625" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </VBox>
+      <AnchorPane fx:id="artworkPane" disable="true" layoutX="219.0" layoutY="14.0" prefHeight="625.0" prefWidth="984.0" style="-fx-background-color: #D3D3D3;" visible="false" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView fx:id="artworkTable" editable="true" layoutX="9.0" layoutY="81.0" prefHeight="427.0" prefWidth="620.0" stylesheets="@table.css" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="231.0" AnchorPane.topAnchor="81.0">
+              <columns>
+                <TableColumn fx:id="artwork_col_id" prefWidth="35.20002746582031" text="ID" />
+                <TableColumn fx:id="artwork_col_name" prefWidth="84.79998779296875" text="Name" />
+                  <TableColumn fx:id="artwork_col_artist" prefWidth="88.79998779296875" text="Artist" />
+                  <TableColumn fx:id="artwork_col_genre" prefWidth="82.4000244140625" text="Genre" />
+                  <TableColumn fx:id="artwork_col_type" minWidth="0.0" prefWidth="69.60003662109375" text="Type" />
+                  <TableColumn fx:id="artwork_col_price" prefWidth="56.0" text="Price" />
+                  <TableColumn fx:id="artwork_col_state" prefWidth="66.39996337890625" text="State" />
+                  <TableColumn fx:id="artwork_col_desc" prefWidth="136.0" text="Description" />
+              </columns>
+            </TableView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="256.0" layoutY="49.0" prefHeight="26.0" prefWidth="126.0" style="-fx-alignment: center;" text="Artwork Table" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="478.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="660.0" layoutY="-3.0" prefHeight="622.0" prefWidth="222.0" style="-fx-background-color: #97b8b5; -fx-background-radius: 10;" AnchorPane.bottomAnchor="-2.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="-3.0">
+               <children>
+                  <Label layoutX="11.0" layoutY="23.0" text="Name :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="comboBoxGenre" layoutX="75.0" layoutY="92.0" prefHeight="26.0" prefWidth="114.0" promptText="Choose Genre" />
+                  <JFXTextField fx:id="txtArtworkName" layoutX="75.0" layoutY="14.0" prefHeight="26.0" prefWidth="114.0" promptText="Enter Name" />
+                  <Label layoutX="11.0" layoutY="60.0" text="Price :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtArtworkPrice" layoutX="75.0" layoutY="51.0" prefHeight="26.0" prefWidth="114.0" promptText="Enter Price" />
+                  <Label layoutX="11.0" layoutY="96.0" text="Genre :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="12.0" layoutY="170.0" text="Artist :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="comboBoxArtist" layoutX="75.0" layoutY="161.0" prefHeight="26.0" prefWidth="114.0" promptText="Choose Artist" />
+                  <JFXTextArea fx:id="txtDescription" layoutX="13.0" layoutY="252.0" prefHeight="117.0" prefWidth="200.0" promptText="Description of Art" />
+                  <Label layoutX="14.0" layoutY="230.0" text="Description">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXCheckBox fx:id="chBoxSold" layoutX="14.0" layoutY="200.0" text="Sold">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXCheckBox>
+                  <ListView fx:id="listImage" layoutX="11.0" layoutY="395.0" prefHeight="214.0" prefWidth="200.0" AnchorPane.bottomAnchor="13.0" AnchorPane.topAnchor="395.0" />
+                  <Label layoutX="10.0" layoutY="373.0" text="Images :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="comboBoxType" layoutX="75.0" layoutY="128.0" prefHeight="26.0" prefWidth="114.0" promptText="Choose Type" />
+                  <Label layoutX="11.0" layoutY="132.0" text="Type :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER" layoutX="103.0" layoutY="522.0" prefHeight="66.0" prefWidth="431.0" spacing="30.0" AnchorPane.bottomAnchor="28.599999999999994" AnchorPane.leftAnchor="103.00000000000006" AnchorPane.rightAnchor="325.8">
+               <children>
+                  <JFXButton onAction="#addArtWork" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #9e9304; -fx-text-alignment: left;" text="Add" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#editArtwork" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #9e9304;" text="Edit" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #9e9304; -fx-text-alignment: right;" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children></AnchorPane>
+      <AnchorPane fx:id="artistPane" disable="true" layoutX="219.0" layoutY="-1.0" prefHeight="614.0" prefWidth="854.0" style="-fx-background-color: #D3D3D3;" visible="false" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="-1.0">
+         <children>
+            <TableView fx:id="artistTable" editable="true" layoutX="9.0" layoutY="81.0" onMouseClicked="#ArtistTableListener" prefHeight="436.0" prefWidth="620.0" stylesheets="@table.css" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="81.0">
+               <columns>
+                  <TableColumn fx:id="artist_col_id" prefWidth="43.99995422363281" text="ID" />
+                  <TableColumn fx:id="artist_col_name" prefWidth="100.00003051757812" text="Name" />
+                  <TableColumn fx:id="artist_col_family" prefWidth="107.20001220703125" text="Family" />
+                  <TableColumn fx:id="artist_col_age" prefWidth="62.39996337890625" text="Age" />
+               </columns>
+            </TableView>
+            <Label layoutX="263.0" layoutY="7.0" text="Artist Table" AnchorPane.leftAnchor="263.0" AnchorPane.rightAnchor="498.2">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <AnchorPane fx:id="pane" layoutX="624.0" layoutY="-7.0" prefHeight="622.0" prefWidth="222.0" style="-fx-background-color: #97b8b5; -fx-background-radius: 10;" AnchorPane.bottomAnchor="-8.0" AnchorPane.rightAnchor="-11.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="12.0" layoutY="56.0" text="Name :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="comboxAge" layoutX="76.0" layoutY="143.0" prefHeight="26.0" prefWidth="114.0" promptText="Age" />
+                  <JFXTextField fx:id="txtArtistName" layoutX="76.0" layoutY="47.0" prefHeight="26.0" prefWidth="114.0" promptText="Enter Name" />
+                  <Label layoutX="12.0" layoutY="101.0" text="Family">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtArtistFamily" layoutX="76.0" layoutY="92.0" prefHeight="26.0" prefWidth="114.0" promptText="Enter Family" />
+                  <Label layoutX="12.0" layoutY="147.0" text="Age :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="listArtistImage" layoutX="12.0" layoutY="230.0" prefHeight="374.0" prefWidth="200.0" AnchorPane.bottomAnchor="17.600000000000023" />
+                  <Label layoutX="12.0" layoutY="196.0" text="Choose Image:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER" layoutX="129.0" layoutY="519.0" prefHeight="66.0" prefWidth="380.0" spacing="30.0" AnchorPane.bottomAnchor="28.600000000000023" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="345.0">
+               <children>
+                  <JFXButton onAction="#addArtist" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #9e9304; -fx-text-alignment: left;" text="Add" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnEditArtist" onAction="#editArtist" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #9e9304;" text="Edit" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#deleteArtistTbale" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #9e9304; -fx-text-alignment: right;" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="genrePane" disable="true" layoutX="219.0" prefHeight="622.0" prefWidth="866.0" style="-fx-background-color: #D3D3D3;" visible="false" AnchorPane.bottomAnchor="-8.399999999999977" AnchorPane.leftAnchor="219.0000000000001" AnchorPane.rightAnchor="-7.399999999999977" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView fx:id="genreTable" editable="true" layoutX="8.0" layoutY="38.0" onMouseClicked="#GenreTableListener" prefHeight="483.0" prefWidth="603.0" stylesheets="@table.css" AnchorPane.bottomAnchor="101.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="217.0" AnchorPane.topAnchor="38.0">
+               <columns>
+                  <TableColumn fx:id="genre_col_name" prefWidth="640.6000274658202" text="Name" />
+               </columns>
+            </TableView>
+            <Label layoutX="264.0" layoutY="12.0" prefHeight="26.0" prefWidth="108.0" text="Genre Table" AnchorPane.leftAnchor="264.0" AnchorPane.rightAnchor="494.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="649.0" layoutY="242.0" prefHeight="75.0" prefWidth="215.0" style="-fx-background-color: #97b8b5;" AnchorPane.bottomAnchor="305.2" AnchorPane.rightAnchor="2.199999999999818">
+               <children>
+                  <Label layoutX="11.0" layoutY="23.0" text="Name :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtGenreName" layoutX="75.0" layoutY="14.0" prefHeight="26.0" prefWidth="114.0" promptText="Enter Genre Name" />
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER" layoutX="144.0" layoutY="522.0" prefHeight="66.0" prefWidth="370.0" spacing="30.0" AnchorPane.bottomAnchor="33.99999999999997" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="352.0">
+               <children>
+                  <JFXButton onAction="#addGenre" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #9e9304; -fx-text-alignment: left;" text="Add" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#editGenre" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #9e9304;" text="Edit" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#deleteGenre" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #9e9304; -fx-text-alignment: right;" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="eventPane" layoutX="222.0" layoutY="-7.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="866.0" style="-fx-background-color: #D3D3D3;" visible="false" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-7.0">
+         <children>
+            <Label layoutX="41.0" layoutY="114.0" prefHeight="18.0" prefWidth="53.0" text="Date :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TableView fx:id="inpRogressTable" layoutX="27.0" layoutY="151.0" prefHeight="448.0" prefWidth="820.0" stylesheets="@table.css" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="151.0">
+               <columns>
+                  <TableColumn prefWidth="101.59999084472656" text="Name" />
+                  <TableColumn prefWidth="85.59994506835938" text="Date" />
+                  <TableColumn prefWidth="124.0" text="Artist" />
+               </columns>
+            </TableView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="654.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXButton layoutX="741.0" layoutY="110.0" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #9e9304;" text="Search" textFill="WHITE" AnchorPane.rightAnchor="38.599999999999994">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXComboBox fx:id="comboDate" layoutX="107.0" layoutY="111.0" prefHeight="26.0" prefWidth="97.0" promptText="Dates" />
+            <JFXButton fx:id="artworkbtn111" layoutX="10.599999999999994" layoutY="281.0" onAction="#manageArtwork" prefHeight="153.0" prefWidth="224.0" ripplerFill="RED" text="Manage Event" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" size="17" translateX="-2.0" />
+               </graphic>
+            </JFXButton>
+            <AnchorPane layoutX="-4.0" layoutY="-34.0" prefHeight="75.0" prefWidth="875.0" style="-fx-background-color: #244361;" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-5.2000000000000455" AnchorPane.topAnchor="-34.0">
+               <children>
+                  <JFXButton fx:id="artworkbtn1" layoutX="438.0" layoutY="35.0" onAction="#showDetails" prefHeight="86.0" prefWidth="437.5" ripplerFill="RED" text="Show Details" textFill="WHITE" AnchorPane.rightAnchor="-0.39999999999997726" AnchorPane.topAnchor="35.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="REORDER" size="15" translateX="5.0" wrappingWidth="27.014270782470703" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton layoutY="36.0" onAction="#manageEvents" prefHeight="86.0" prefWidth="437.5" ripplerFill="#00ecff" text="Manage Events" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="36.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="WHITE" glyphName="CALENDAR" size="17" wrappingWidth="20.942845821380615" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="manageEventsPane" layoutX="215.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="617.0" prefWidth="866.0" style="-fx-background-color: #D3D3D3;" visible="false" AnchorPane.bottomAnchor="-2.6000000000000227" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="-3.3999999999999773" AnchorPane.topAnchor="-1.0">
+         <children>
+            <AnchorPane prefHeight="626.0" prefWidth="229.0" style="-fx-background-color: #97b8b5; -fx-background-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-8.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <JFXButton fx:id="btnAdd" layoutX="18.0" layoutY="562.0" prefHeight="26.0" prefWidth="53.0" style="-fx-background-color: #9e9304;" text="Add" textFill="WHITE" AnchorPane.bottomAnchor="29.200000000000045">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></JFXButton>
+                  <JFXButton fx:id="btnEdit" layoutX="90.0" layoutY="562.0" prefHeight="26.0" prefWidth="53.0" style="-fx-background-color: #9e9304;" text="Edit" textFill="WHITE" AnchorPane.bottomAnchor="29.200000000000045">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></JFXButton>
+                  <JFXButton fx:id="btnDelete" layoutX="159.0" layoutY="563.0" style="-fx-background-color: #9e9304;" text="Delete" textFill="WHITE" AnchorPane.bottomAnchor="29.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></JFXButton>
+                  <JFXListView fx:id="listArtworks" layoutX="12.0" layoutY="251.0" prefHeight="290.0" prefWidth="208.0" AnchorPane.bottomAnchor="77.0" AnchorPane.topAnchor="251.0" />
+                  <Label layoutX="18.0" layoutY="224.0" text="Artwork :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <Label alignment="CENTER" layoutX="217.0" layoutY="19.0" prefHeight="34.0" prefWidth="208.0" text="Manage Events" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="441.4">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <JFXNodesList layoutX="158.0" layoutY="260.0" />
+            <TableView fx:id="previousEventsTable" layoutX="11.0" layoutY="67.0" prefHeight="524.0" prefWidth="620.0" stylesheets="@table.css" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="67.0">
+               <columns>
+                  <TableColumn fx:id="event_col_name" prefWidth="96.0" text="Name" />
+                  <TableColumn fx:id="event_col_artwork" prefWidth="103.19998168945312" text="Date" />
+                  <TableColumn fx:id="event_col_artworkState" prefWidth="122.40005493164062" text="Artwork State" />
+                  <TableColumn fx:id="event_col_artist" prefWidth="143.20001220703125" text="Artist" />
+               </columns>
+            </TableView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="654.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="660.0" layoutY="36.0" text="Name :">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="661.0" layoutY="106.0" text="Artist :">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="eventName" layoutX="732.0" layoutY="28.0" prefHeight="26.0" prefWidth="114.0" promptText="Enter Name" />
+            <JFXComboBox fx:id="comboArtist" layoutX="732.0" layoutY="94.0" prefHeight="26.0" prefWidth="114.0" promptText="Artists" />
+            <Label layoutX="662.0" layoutY="174.0" text="Date :">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <JFXDatePicker fx:id="datepicker2" defaultColor="#006e8f" layoutX="701.0" layoutY="161.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="28.0" prefWidth="145.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="typePane" layoutX="218.0" layoutY="-3.0" prefHeight="618.0" prefWidth="860.0" style="-fx-background-color: #D3D3D3;" visible="false" AnchorPane.bottomAnchor="-1.3999999999999773" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0">
+         <children>
+            <TableView fx:id="typeTable" editable="true" layoutX="8.0" layoutY="38.0" onMouseClicked="#typeTableListener" prefHeight="483.0" prefWidth="603.0" stylesheets="@table.css" AnchorPane.bottomAnchor="101.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="217.0" AnchorPane.topAnchor="38.0">
+               <columns>
+                  <TableColumn fx:id="type_col_name" prefWidth="82.39999389648438" text="Name" />
+               </columns>
+            </TableView>
+            <Label layoutX="264.0" layoutY="12.0" prefHeight="26.0" prefWidth="108.0" text="Type Table" AnchorPane.leftAnchor="258.0" AnchorPane.rightAnchor="494.0" AnchorPane.topAnchor="12.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="649.0" layoutY="242.0" prefHeight="75.0" prefWidth="215.0" style="-fx-background-color: #97b8b5;" AnchorPane.bottomAnchor="305.2" AnchorPane.rightAnchor="2.199999999999818" AnchorPane.topAnchor="238.0">
+               <children>
+                  <Label layoutX="11.0" layoutY="23.0" text="Name :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtTypeName" layoutX="75.0" layoutY="14.0" prefHeight="26.0" prefWidth="114.0" promptText="Enter Genre Name" text="Enter Type " />
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER" layoutX="144.0" layoutY="522.0" prefHeight="66.0" prefWidth="370.0" spacing="30.0" AnchorPane.bottomAnchor="33.99999999999997" AnchorPane.leftAnchor="144.0" AnchorPane.rightAnchor="352.0">
+               <children>
+                  <JFXButton onAction="#addType" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #9e9304; -fx-text-alignment: left;" text="Add" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#editType" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #9e9304;" text="Edit" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#deleteType" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #9e9304; -fx-text-alignment: right;" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="showDetailOfEvent" layoutX="214.0" layoutY="-2.0" prefHeight="622.0" prefWidth="866.0" AnchorPane.bottomAnchor="-6.399999999999977" AnchorPane.leftAnchor="214.0000000000001" AnchorPane.rightAnchor="-2.3999999999999773" AnchorPane.topAnchor="-2.0">
+         <children>
+            <TableView layoutX="39.0" layoutY="192.0" prefHeight="408.0" prefWidth="801.0" stylesheets="@table.css" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="192.0">
+              <columns>
+                <TableColumn prefWidth="51.999969482421875" text="ID" />
+                <TableColumn prefWidth="79.20001220703125" text="Name" />
+                  <TableColumn prefWidth="132.0" text="Type" />
+                  <TableColumn prefWidth="88.79998779296875" text="Genre" />
+                  <TableColumn prefWidth="92.0" text="Price" />
+                  <TableColumn prefWidth="127.20001220703125" text="Description" />
+                  <TableColumn prefWidth="227.80002441406236" />
+              </columns>
+            </TableView>
+            <TilePane alignment="CENTER" layoutX="630.0" layoutY="2.0" prefHeight="178.0" prefWidth="235.0" style="-fx-background-color: black; -fx-border-color: #ad6868; -fx-border-width: 10;" AnchorPane.rightAnchor="1.199999999999818" AnchorPane.topAnchor="2.0">
+               <children>
+                  <ImageView fitHeight="158.0" fitWidth="215.0" pickOnBounds="true" preserveRatio="true" TilePane.alignment="CENTER" />
+               </children>
+            </TilePane>
+            <Label layoutX="333.0" layoutY="25.0" prefHeight="26.0" prefWidth="200.0" text="Show Details of Event ..." AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.39999999999986" AnchorPane.topAnchor="25.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

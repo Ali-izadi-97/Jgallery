@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="1077.0" style="-fx-background-color: #eee5de;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VisitorController">
+    <children>
+        <AnchorPane layoutX="-4.0" layoutY="-19.0" prefHeight="120.0" prefWidth="1083.0" style="-fx-background-color: #1d2026;" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="-19.0">
+            <children>
+              <ImageView fitHeight="122.0" fitWidth="105.0" layoutX="-7.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../../../../../art-gallery-emblem-vector-21174184.jpg" />
+                  </image>
+              </ImageView>
+                <Label layoutX="113.0" layoutY="-1.0" prefHeight="108.0" prefWidth="478.0" text="Art Gallery" textFill="WHITE">
+                    <font>
+                        <Font name="Viner Hand ITC" size="54.0" />
+                    </font>
+                </Label>
+            <FontAwesomeIconView fx:id="closeIcon" fill="#ff7979" glyphName="CLOSE" layoutX="1038.0" layoutY="48.0" size="30" AnchorPane.rightAnchor="5.62857170104985" AnchorPane.topAnchor="22.285715103149414" />
+            </children>
+        </AnchorPane>
+        <Pane layoutX="-1.0" layoutY="83.0" prefHeight="50.0" prefWidth="1083.0" style="-fx-background-color: #64B6AE;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-5.2000000000000455" />
+      <TilePane fx:id="imagePane" alignment="CENTER" layoutX="414.0" layoutY="147.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 10; -fx-border-radius: 5;" AnchorPane.bottomAnchor="108.80000000000001" AnchorPane.leftAnchor="414.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="147.00000000000006">
+         <children>
+                <ImageView fx:id="imageView" fitHeight="410.0" fitWidth="542.0" pickOnBounds="true" TilePane.alignment="CENTER">
+                    <image>
+                        <Image url="@../../../../../IMG_20170114_222025_931-58a01296a1b60__880.jpg" />
+                    </image>
+                </ImageView>
+         </children>
+      </TilePane>
+        <JFXButton fx:id="prevbtn" buttonType="RAISED" layoutX="334.0" layoutY="363.0" onAction="#prevButton" prefHeight="33.0" prefWidth="66.0" style="-fx-background-color: orange;" text="Prev" textFill="WHITE" AnchorPane.leftAnchor="334.0">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </JFXButton>
+        <JFXButton fx:id="nextbtn" buttonType="RAISED" layoutX="992.0000000000001" layoutY="363.0" onAction="#nextButton" prefHeight="33.0" prefWidth="66.0" style="-fx-background-color: orange;" text="Next" textFill="WHITE" AnchorPane.rightAnchor="18.59999999999991">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </JFXButton>
+      <HBox alignment="BOTTOM_CENTER" layoutX="365.0" layoutY="606.0" prefHeight="61.0" prefWidth="675.0" spacing="50.0" style="-fx-alignment: center; -fx-border-color: #9c201e; -fx-border-radius: 5; -fx-border-width: 4;" AnchorPane.bottomAnchor="19.4" AnchorPane.leftAnchor="365.0" AnchorPane.rightAnchor="36.799999999999955">
+         <children>
+            <Label text="Artist :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="artistComboBox" promptText="Artist" />
+            <Label prefHeight="22.0" prefWidth="57.0" text="Genre :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="genreComboBox" prefHeight="26.0" prefWidth="59.0" promptText="Genre" />
+            <Label text="Type :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="typeComboBox" promptText="Type" />
+         </children>
+      </HBox>
+      <AnchorPane fx:id="infoPane" layoutX="-16.0" layoutY="131.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="331.0" style="-fx-background-color: #1d2026; -fx-background-radius: 15;" AnchorPane.bottomAnchor="-9.600000000000023" AnchorPane.topAnchor="131.0">
+         <children>
+            <Label layoutX="19.0" layoutY="2.0" text="Artist Info" textFill="WHITE">
+               <font>
+                  <Font name="Freestyle Script" size="32.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="artistImage" fitHeight="90.0" fitWidth="107.0" layoutX="21.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../face2.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="120.0" layoutY="65.0" text="Name:" textFill="#dddddd" AnchorPane.topAnchor="65.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="artistName" layoutX="171.0" layoutY="65.0" text="Hamidreza Memar" textFill="#dddddd">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="120.0" layoutY="89.0" prefHeight="26.0" prefWidth="43.0" text="Age:" textFill="#dddddd">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="artistAge" layoutX="154.0" layoutY="92.0" text="20" textFill="#dddddd">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Line endX="278.4000244140625" endY="0.5929115414619446" layoutX="56.0" layoutY="155.0" startX="-46.0000114440918" AnchorPane.bottomAnchor="406.9" AnchorPane.topAnchor="154.5">
+               <stroke>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#88921e" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Line>
+            <Line endX="270.0" layoutX="66.0" layoutY="458.0" startX="-54.20001220703125">
+               <stroke>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#88921e" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Line>
+            <Label layoutX="29.0" layoutY="159.0" text="Art Description" textFill="WHITE">
+               <font>
+                  <Font name="Freestyle Script" size="32.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="480.0" text="Price" textFill="WHITE" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="480.0">
+               <font>
+                  <Font name="Freestyle Script" size="32.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="50.0" layoutX="83.0" layoutY="483.60000000000014" stroke="BLACK" strokeType="INSIDE" width="221.0" AnchorPane.bottomAnchor="31.999999999999886" AnchorPane.topAnchor="483.60000000000014" />
+            <Label fx:id="price" layoutX="125.00000000000003" layoutY="484.00000000000006" prefHeight="46.0" prefWidth="149.0" text="5000000 T">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="descriptionArea" editable="false" layoutX="24.0" layoutY="214.0" prefHeight="231.0" prefWidth="302.0" style="-fx-background-color: white; -fx-border-color: orange; -fx-border-width: 3;" text="Inspired by science fictional depictions of arid worlds and the cultural practices that develop around water scarcity, this piece envisions a propositional social ritual that has developed in response to the growing threat of water scarcity in California. Through a combination of diegetic prototypes and video, Water Rites explores a slice of uncanny, fictitious culture from a world where our relationship to water is far less cavalier. In a similar manner to my practice of demonstrating the dynamism and unfixity of identity through constant character transformations, the installations will demonstrate the same through their cycles of transformation. Each installation space parodies real-world, real spaces: studio, office, commercial, domestic, etc. Each space will be open to the viewer as participant/user; the manner in which they participate with, or use it will be dependent on the identity of each installation. Each space will be inhabited and uninhabited at different times to play with presence and absence. Each will aim to antagonize, upset, frustrate and/or agitate the viewer through different anti-social strategies that will include: parody, deceit, surveillance and theft.&#10;">
+               <padding>
+                  <Insets left="10.0" right="3.0" top="5.0" />
+               </padding>
+            </JFXTextArea>
+            <FontAwesomeIconView fx:id="nextIcon" fill="WHITE" glyphName="FORWARD" layoutX="304.0" layoutY="195.0" size="25" wrappingWidth="16.800000000000068" />
+            <FontAwesomeIconView fx:id="prevIcon" fill="WHITE" glyphName="BACKWARD" layoutX="254.0" layoutY="195.0" size="25" />
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>

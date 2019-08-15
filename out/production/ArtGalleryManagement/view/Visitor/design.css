@@ -1,0 +1,9 @@
+.jfx-progress-bar > .bar {
+    -fx-background-color: darksalmon;
+}
+
+.root {
+    -fx-background-color: burlywood;
+}
+
+
